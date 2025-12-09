@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>MealMatch – Ricette intelligenti</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+
+  <!-- Icone (dovrai creare i file reali nella cartella icons/) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-32.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">🥗 MealMatch</div>
+    <div class="subtitle">Trova la ricetta perfetta con ciò che hai</div>
+  </header>
+
+  <main class="container">
+    <!-- SEZIONE INGREDIENTI -->
+    <section class="card">
+      <h2>1. Ingredienti che hai</h2>
+      <p>Scrivi un ingrediente, scegli la quantità e aggiungilo alla lista.</p>
+      <div class="row">
+        <input
+          id="ingredientInput"
+          type="text"
+          placeholder="Es. pasta, petto di pollo, zucchine..."
+          autocomplete="off"
+        />
+        <button id="addIngredientBtn" class="primary">Aggiungi</button>
+      </div>
+      <div id="ingredientSuggestions" class="suggestions"></div>
+
+      <h3>Ingredienti selezionati</h3>
+      <ul id="selectedIngredients" class="pill-list"></ul>
+    </section>
+
+    <!-- SEZIONE FILTRI RICETTE -->
+    <section class="card">
+      <h2>2. Filtri ricette</h2>
+      <div class="filters-grid">
+        <div>
+          <label>Kcal min</label>
+          <input id="kcalMin" type="number" placeholder="0" />
+        </div>
+        <div>
+          <label>Kcal max</label>
+          <input id="kcalMax" type="number" placeholder="800" />
+        </div>
+        <div>
+          <label>Proteine min (g)</label>
+          <input id="proteinMin" type="number" placeholder="0" />
+        </div>
+        <div>
+          <label>Carbo max (g)</label>
+          <input id="carbMax" type="number" placeholder="200" />
+        </div>
+        <div>
+          <label>Grassi max (g)</label>
+          <input id="fatMax" type="number" placeholder="80" />
+        </div>
+        <div>
+          <label>Costo max (€)</label>
+          <input id="costMax" type="number" placeholder="10" />
+        </div>
+        <div>
+          <label>Tempo max (min)</label>
+          <input id="timeMax" type="number" placeholder="30" />
+        </div>
+        <div>
+          <label>Difficoltà</label>
+          <select id="difficultyFilter">
+            <option value="">Qualsiasi</option>
+            <option value="facile">Facile</option>
+            <option value="media">Media</option>
+            <option value="difficile">Difficile</option>
+          </select>
+        </div>
+        <div>
+          <label>Dieta</label>
+          <select id="dietFilter">
+            <option value="">Qualsiasi</option>
+            <option value="vegano">Vegano</option>
+            <option value="vegetariano">Vegetariano</option>
+            <option value="onnivoro">Onnivoro</option>
+          </select>
+        </div>
+        <div>
+          <label>Evento</label>
+          <select id="eventFilter">
+            <option value="">Nessuno</option>
+            <option value="natale">Natale</option>
+            <option value="pasqua">Pasqua</option>
+            <option value="compleanno">Compleanno</option>
+            <option value="pranzo_veloce">Pranzo veloce</option>
+            <option value="cena_leggera">Cena leggera</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row row-wrap" style="margin-top:8px;">
+        <button id="generateRealRecipesBtn" class="primary">
+          Ricette REALI
+        </button>
+        <button id="generateAiRecipesBtn" class="secondary">
+          Ricette generate con i miei ingredienti
+        </button>
+      </div>
+    </section>
+
+    <!-- SEZIONE LOCALIZZAZIONE (SUPERMERCATI / SPESA ONLINE) -->
+    <section class="card">
+      <h2>3. Dove comprare gli ingredienti</h2>
+      <p>
+        Usa la tua posizione per trovare il supermercato più vicino o vai
+        direttamente sui servizi di spesa online.
+      </p>
+      <div class="row row-wrap">
+        <button id="findStoreBtn" class="primary">Supermercato vicino</button>
+        <button id="buyOnlineBtn" class="secondary">Compra online</button>
+      </div>
+      <div id="locationStatus" class="status"></div>
+    </section>
+
+    <!-- SEZIONE FOTO FRIGO -->
+    <section class="card">
+      <h2>4. Analisi (simulata) del frigo</h2>
+      <p>Carica una foto del frigo per simulare il riconoscimento ingredienti.</p>
+      <div class="row row-wrap">
+        <input type="file" id="fridgeImageInput" accept="image/*" />
+        <button id="mockDetectBtn" class="secondary">
+          Simula riconoscimento ingredienti
+        </button>
+      </div>
+      <div id="fridgePreview" class="fridge-preview"></div>
+    </section>
+
+    <!-- SEZIONE RISULTATI RICETTE -->
+    <section class="card">
+      <h2>5. Ricette proposte</h2>
+      <div id="recipesList"></div>
+    </section>
+
+    <!-- SEZIONE RICETTE SALVATE -->
+    <section class="card">
+      <h2>Le tue ricette salvate</h2>
+      <div id="savedRecipes"></div>
+    </section>
+  </main>
+
+  <!-- MODALE QUANTITÀ INGREDIENTE -->
+  <div id="quantityModal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="qmTitle">Quantità ingrediente</h3>
+      <p id="qmSubtitle"></p>
+      <label>
+        Quantità
+        <input type="number" id="qmQuantity" min="1" value="100" />
+      </label>
+      <label>
+        Unità
+        <select id="qmUnit"></select>
+      </label>
+      <div class="modal-actions">
+        <button id="qmCancel" class="secondary">Annulla</button>
+        <button id="qmConfirm" class="primary">Conferma</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>MealMatch – demo personale • Funziona anche su smartphone</p>
+  </footer>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("./sw.js")
+        .catch((err) => console.error("SW error:", err));
+    }
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
