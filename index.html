@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>MealMatch – Ricette intelligenti</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>MealMatch</h1>
+  <p>Crea ricette in base agli ingredienti, ai tuoi obiettivi e agli eventi.</p>
+</header>
+
+<main>
+  <!-- SEZIONE 1: Ingredienti -->
+  <section class="card">
+    <h2>Ingredienti disponibili</h2>
+
+    <div class="row">
+      <input id="ingredientInput" placeholder="Scrivi un ingrediente (es. pane integrale, pollo, pasta)...">
+      <button id="addIngredientBtn">Aggiungi</button>
+    </div>
+    <div id="ingredientSuggestions" class="suggestions"></div>
+
+    <h3>Ingredienti selezionati</h3>
+    <ul id="selectedIngredients"></ul>
+  </section>
+
+  <!-- SEZIONE 2: Foto del frigo -->
+  <section class="card">
+    <h2>Scansiona il frigo (beta)</h2>
+    <p>Carica una foto del tuo frigo. In futuro qui potrai collegare un'IA reale per riconoscere gli ingredienti.</p>
+    <input type="file" id="fridgeImageInput" accept="image/*">
+    <div id="fridgePreview"></div>
+    <button id="mockDetectBtn" class="secondary">Simula riconoscimento ingredienti</button>
+    <p class="note">⚠ Questa versione non usa ancora una IA reale: la funzione è predisposta, ma va collegata a un'API esterna (quando vorrai fare la versione “seria”).</p>
+  </section>
+
+  <!-- SEZIONE 3: Filtri -->
+  <section class="card">
+    <h2>Filtri nutrizionali & preferenze</h2>
+
+    <div class="grid">
+      <label>Calorie min (per porzione)
+        <input type="number" id="kcalMin" placeholder="es. 400">
+      </label>
+      <label>Calorie max (per porzione)
+        <input type="number" id="kcalMax" placeholder="es. 800">
+      </label>
+      <label>Proteine min (g)
+        <input type="number" id="proteinMin" placeholder="es. 20">
+      </label>
+      <label>Carboidrati max (g)
+        <input type="number" id="carbMax" placeholder="opzionale">
+      </label>
+      <label>Grassi max (g)
+        <input type="number" id="fatMax" placeholder="opzionale">
+      </label>
+      <label>Costo max (€ a porzione)
+        <input type="number" id="costMax" placeholder="es. 5">
+      </label>
+      <label>Tempo max (minuti)
+        <input type="number" id="timeMax" placeholder="es. 30">
+      </label>
+      <label>Difficoltà
+        <select id="difficultyFilter">
+          <option value="">Qualsiasi</option>
+          <option value="facile">Facile</option>
+          <option value="media">Media</option>
+          <option value="difficile">Difficile</option>
+        </select>
+      </label>
+      <label>Dieta
+        <select id="dietFilter">
+          <option value="">Nessuna</option>
+          <option value="onnivoro">Onnivoro</option>
+          <option value="vegetariano">Vegetariana</option>
+          <option value="vegano">Vegana</option>
+          <option value="chetogenica">Chetogenica</option>
+          <option value="ipocalorica">Ipocalorica</option>
+          <option value="ipercalorica">Ipercalorica (massa)</option>
+        </select>
+      </label>
+      <label>Evento
+        <select id="eventFilter">
+          <option value="">Nessuno</option>
+          <option value="natale">Natale</option>
+          <option value="pasqua">Pasqua</option>
+          <option value="compleanno">Compleanno</option>
+          <option value="pranzo_veloce">Pranzo veloce</option>
+          <option value="cena_leggera">Cena leggera</option>
+        </select>
+      </label>
+    </div>
+
+    <button id="generateRecipesBtn" class="primary">Genera proposte di ricette</button>
+  </section>
+
+  <!-- SEZIONE 4: Risultati -->
+  <section class="card">
+    <h2>Ricette proposte</h2>
+    <div id="recipesList"></div>
+  </section>
+
+  <!-- SEZIONE 5: Ricette salvate -->
+  <section class="card">
+    <h2>Le mie ricette salvate</h2>
+    <div id="savedRecipes"></div>
+  </section>
+</main>
+
+<footer>
+  <small>MealMatch – tutti i calcoli avvengono in locale. I dati nutrizionali sono stimati: puoi modificarli nel file <code>data/ingredients.json</code>.</small>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

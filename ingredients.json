@@ -1,0 +1,148 @@
+{
+  "Pane bianco": {
+    "category": "pane",
+    "kcal": 265,
+    "protein": 9.0,
+    "carb": 49.0,
+    "fat": 3.2,
+    "diet": ["onnivoro", "vegetariano"],
+    "tags": ["base", "carboidrato"],
+    "cost_per_100g": 0.25
+  },
+  "Pane integrale": {
+    "category": "pane",
+    "kcal": 252,
+    "protein": 11.0,
+    "carb": 41.0,
+    "fat": 4.2,
+    "diet": ["onnivoro", "vegetariano"],
+    "tags": ["base", "carboidrato", "fibre"],
+    "cost_per_100g": 0.30
+  },
+  "Pane ai 5 cereali": {
+    "category": "pane",
+    "kcal": 260,
+    "protein": 10.0,
+    "carb": 44.0,
+    "fat": 4.5,
+    "diet": ["onnivoro", "vegetariano"],
+    "tags": ["base", "carboidrato", "fibre"],
+    "cost_per_100g": 0.35
+  },
+
+  "Pasta di semola": {
+    "category": "pasta",
+    "kcal": 371,
+    "protein": 13.0,
+    "carb": 75.0,
+    "fat": 1.5,
+    "diet": ["onnivoro", "vegetariano"],
+    "tags": ["base", "carboidrato"],
+    "cost_per_100g": 0.20
+  },
+  "Pasta integrale": {
+    "category": "pasta",
+    "kcal": 348,
+    "protein": 14.0,
+    "carb": 72.0,
+    "fat": 2.5,
+    "diet": ["onnivoro", "vegetariano"],
+    "tags": ["base", "carboidrato", "fibre"],
+    "cost_per_100g": 0.25
+  },
+
+  "Petto di pollo": {
+    "category": "carne",
+    "kcal": 165,
+    "protein": 31.0,
+    "carb": 0.0,
+    "fat": 3.6,
+    "diet": ["onnivoro"],
+    "tags": ["proteina magra"],
+    "cost_per_100g": 0.80
+  },
+  "Salmone": {
+    "category": "pesce",
+    "kcal": 208,
+    "protein": 20.0,
+    "carb": 0.0,
+    "fat": 13.0,
+    "diet": ["onnivoro"],
+    "tags": ["proteina", "grassi buoni"],
+    "cost_per_100g": 1.50
+  },
+
+  "Tofu": {
+    "category": "proteina_vegetale",
+    "kcal": 76,
+    "protein": 8.0,
+    "carb": 1.9,
+    "fat": 4.8,
+    "diet": ["vegano", "vegetariano"],
+    "tags": ["proteina"],
+    "cost_per_100g": 1.00
+  },
+  "Lenticchie": {
+    "category": "legume",
+    "kcal": 116,
+    "protein": 9.0,
+    "carb": 20.0,
+    "fat": 0.4,
+    "diet": ["vegano", "vegetariano"],
+    "tags": ["proteina", "carboidrato"],
+    "cost_per_100g": 0.40
+  },
+
+  "Zucchine": {
+    "category": "verdura",
+    "kcal": 17,
+    "protein": 1.2,
+    "carb": 3.1,
+    "fat": 0.3,
+    "diet": ["vegano", "vegetariano", "onnivoro"],
+    "tags": ["verdura"],
+    "cost_per_100g": 0.30
+  },
+  "Broccoli": {
+    "category": "verdura",
+    "kcal": 34,
+    "protein": 2.8,
+    "carb": 7.0,
+    "fat": 0.4,
+    "diet": ["vegano", "vegetariano", "onnivoro"],
+    "tags": ["verdura"],
+    "cost_per_100g": 0.50
+  },
+
+  "Olio extravergine d'oliva": {
+    "category": "condimento",
+    "kcal": 884,
+    "protein": 0.0,
+    "carb": 0.0,
+    "fat": 100.0,
+    "diet": ["vegano", "vegetariano", "onnivoro"],
+    "tags": ["grassi_buoni"],
+    "cost_per_100g": 1.20
+  },
+
+  "Mela": {
+    "category": "frutta",
+    "kcal": 52,
+    "protein": 0.3,
+    "carb": 14.0,
+    "fat": 0.2,
+    "diet": ["vegano", "vegetariano", "onnivoro"],
+    "tags": ["frutta"],
+    "cost_per_100g": 0.30
+  },
+  "Banana": {
+    "category": "frutta",
+    "kcal": 89,
+    "protein": 1.1,
+    "carb": 23.0,
+    "fat": 0.3,
+    "diet": ["vegano", "vegetariano", "onnivoro"],
+    "tags": ["frutta"],
+    "cost_per_100g": 0.25
+  }
+}
