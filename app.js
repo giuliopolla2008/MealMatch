@@ -7,7 +7,7 @@ let recipes = [];              // ricette proposte correnti
 // ---------- CARICAMENTO INGREDIENTI ----------
 async function loadIngredients() {
   try {
-    const res = await fetch("data/ingredients.json");
+    const res = await fetch("ingredients.json");
     INGREDIENTS = await res.json();
     console.log("Ingredienti caricati:", Object.keys(INGREDIENTS).length);
   } catch (e) {
@@ -458,3 +458,4 @@ function renderSavedRecipes() {
   renderSelectedIngredients();
   renderSavedRecipes();
 })();
+
